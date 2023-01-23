@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   exportcsv() {
     let data = {
-      userId: '63cd17a32e671549f079f736'
+      userId: this.userDetail.id
     } as const;
     this.subsciption.push(
       this.itemService.exportcsv(data).subscribe({
