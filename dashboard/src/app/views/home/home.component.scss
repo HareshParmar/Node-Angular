@@ -1,0 +1,167 @@
+
+
+.loader {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.loader div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #fff;
+  animation: loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.loader div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+.loader div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+.loader div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+@keyframes loader {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+  50%, 100% {
+    top: 19px;
+    height: 26px;
+  }
+}
+.spinner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+
+a{
+    cursor: pointer;
+}
+
+
+.container {
+  margin-top: 10vh !important;
+  width: 852px;
+  background-color: #f3f3f3;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.wrapper {
+  margin: 8px 0;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+}
+
+input {
+  min-width: 20px;
+  padding: 8px;
+  margin: 0 4px 0 0;
+  border: 1px solid #666;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.button {
+  min-height: 31px;
+  min-width: 10px;
+  word-wrap: nowrap;
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+input {
+    order: 0;
+    align-self: auto;  
+}
+
+.search {
+  flex: 1 1 auto;
+}
+
+
+.button {
+    order: 4;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.custom {
+  margin-top: 2vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.centerdisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mr {
+  margin-right: 20px;
+}
+
+.items {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 45%;
+}
+
+.items td, .items th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.items tr:nth-child(even){background-color: #f2f2f2;}
+
+.items tr:hover {background-color: #ddd;}
+
+.items th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f3f3f3;
+  color: black;
+}
+
+.mrvh {
+  margin-top: 2vh !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.pointer.active.desc:after {
+  content: "▲";
+}
+.pointer.active.asc:after {
+  content: "▼";
+}
+
+.icnbutton {
+  display: flex;
+  justify-content: space-around;
+}

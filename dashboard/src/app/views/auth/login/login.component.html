@@ -1,0 +1,38 @@
+<div id="registration-forms">
+        <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login()">
+            <h1 class="h3 mb-2 font-weight-normal text-center"> Sign In</h1>
+
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="email">
+            <div class="form-control-feedback" *ngIf="formControls['email'].invalid 
+                    && (formControls['email'].dirty || formControls['email'].touched)">
+                    <small *ngIf="formControls['email']['errors'] && 
+                    formControls['email']['errors']['required']" class="text-danger">
+                    Email is required</small>
+            </div>
+            <div class="password-area">
+                <input type="password" id="inputPassword" class="form-control mt-3" placeholder="Password"
+                    formControlName="password" [type]="hide? 'password': 'text'">
+                <a role="button" (click)="togglePwd()">
+                    <i class="{{hide ? 'fa fa-eye-slash' : 'fa fa-eye'}}"></i>
+                </a>
+
+                <div class="form-control-feedback" *ngIf="formControls['password'].invalid 
+                && (formControls['password'].dirty || formControls['password'].touched)">
+                <small *ngIf="formControls['password']['errors'] && 
+                formControls['password']['errors']['required']" class="text-danger">
+                password is required</small>
+        </div>
+            </div>
+            <button class="btn btn-success btn-block" type="submit"><i class="fa fa-sign-in"></i> Sign in <span
+                    *ngIf="loading"><i class="fa fa-spin fa-spinner"></i></span> </button>
+            
+            <hr>
+            <!-- Don't have an account! -->
+            <div class="text-center">
+                <span>
+                    Don't have an account? <a [routerLink]="['/auth/register']">Create one now</a>
+                </span>
+            </div>
+        </form>
+    
+    </div>

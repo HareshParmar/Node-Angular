@@ -1,0 +1,10 @@
+# dependencies
+/dashboard/node_modules
+/dashboard/.angular/
+/dashboard/.vscode
+
+# production
+/dist
+
+# misc
+.env

@@ -1,0 +1,35 @@
+<nav class="navbar navbar-dark navbar-expand-lg bg-black fixed-top">
+  <span class="navbar-brand homenav">
+    <a [routerLink]="['/home']" routerLinkActive="">
+      <span>
+        Simple Dashboard
+      </span>
+    </a>
+  </span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/items']" routerLinkActive="active">Items</a>
+      </li>
+    </ul>
+    <a role="button" [routerLink]="['/auth/login']" *ngIf="!isLoggedIn" class="btn btn-primary">
+      Login
+    </a>
+    <div *ngIf="isLoggedIn" class="rightside">
+      <span class="loggeduser navbar-text"> Hello {{loggedInUser.name | titlecase}}&nbsp;</span>
+      <button class="btn btn-logout" (click)="logOut()">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="has-nav-fixed">
+  <router-outlet></router-outlet>
+</div>

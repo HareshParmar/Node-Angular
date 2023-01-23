@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+body, html {
+    height: 100%;
+    margin: 0;
+    scroll-behavior: smooth;
+  }
+  
+  body{
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  }
+  * {
+    box-sizing: border-box;
+  }
+  
+  .f-50{
+    font-size: 50px !important;
+  }
+  .nav-btn {
+    position: absolute;
+    cursor: pointer;
+    top: 100px
+  }

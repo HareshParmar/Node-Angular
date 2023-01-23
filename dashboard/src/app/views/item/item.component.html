@@ -1,0 +1,28 @@
+<div id="registration-forms">
+    <form class="form-signup" [formGroup]="itemForm">
+        <h1 class="h3 mb-3 font-weight-normal text-center"> {{title}} </h1>
+        <input type="email" id="user-email" class="form-control" placeholder="Item Name" formControlName="itemname">
+        <div class="form-control-feedback" *ngIf="formControls['itemname'].invalid 
+                    && (formControls['itemname'].dirty || formControls['itemname'].touched)">
+            <small *ngIf="formControls['itemname']['errors'] && 
+                    formControls['itemname']['errors']['required']" class="text-danger">
+                Name is required</small>
+        </div>
+        <input type="number" id="user-name" class="form-control mt-2" placeholder="Enter Price" formControlName="price"
+            min="0">
+        <div class="form-control-feedback" *ngIf="formControls['price'].invalid 
+                    && (formControls['price'].dirty || formControls['price'].touched)">
+            <small *ngIf="formControls['price']['errors'] && 
+                    formControls['price']['errors']['required']" class="text-danger">
+                Please Enter a Price</small>
+        </div>
+        <div class="btnclass">
+            <button class="btn btn-primary btn-block" type="button" [disabled]="loading" (click)="createItem()" *ngIf="title !== 'View Item'">
+                <i class="fa fa-list-alt"></i> Create Item
+                <span *ngIf="loading"><i class="fa fa-spin fa-spinner"></i></span> </button>
+            <button class="btn btn-primary btn-block" type="button" (click)="goBack()" *ngIf="title === 'View Item'">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Back To List
+                <span *ngIf="loading"><i class="fa fa-spin fa-spinner"></i></span> </button>
+        </div>
+    </form>
+</div>

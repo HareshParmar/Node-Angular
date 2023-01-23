@@ -1,0 +1,60 @@
+<div class="container">
+    <form [formGroup]="form">
+        <div class="wrapper">
+            <p>Items List</p>
+            <div class="search-container">
+                <input type="text" class="col-md-6" placeholder="Search By ItemName" formControlName="itemname">
+                <input type="number" min="0" class=" col-md-4" placeholder="Search By Price" formControlName="price">
+            </div>
+            <div class="centerdisplay mrvh">
+                <button type="button" (click)="search()" class="btn btn-primary mr">Search</button>
+                <button type="button" (click)="exportcsv()" [disabled]="!data" 
+                [ngClass]="{'btn btn-secondary': !data, 'btn btn-primary': data}"
+                >Export to CSV</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="spinner" *ngIf="loading">
+    <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<ng-container *ngIf="!loading">
+    <div class="custom centerdisplay" *ngIf="data && data.results">
+        <table class="items">
+            <tr>
+                <!-- <th>Item Name <i class="fa fa-arrow-up" aria-hidden="true"></i></th>
+                <th>Price</th> -->
+                <th [ngClass]="{pointer: true, active:column=='itemname',desc:isDesc, asc:!isDesc}"
+                    (click)="sortItems('itemname')">
+                    Item Name ID</th>
+                <th [ngClass]="{pointer: true, active:column=='price',desc:isDesc, asc:!isDesc}"
+                    (click)="sortItems('price')">
+                    Price</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let item of data.results">
+                <td>{{ item.itemname }}</td>
+                <td>{{ item.price }}</td>
+                <td class="centerdisplay icnbutton">
+                    <button class="btn btn-primary btn-block" type="button" [disabled]="loading"
+                        (click)="viewItem(item.id)">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-primary btn-block" type="button" [disabled]="loading"
+                        (click)="deleteItem(item.id)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <div class="mrvh">
+            <app-pagination #pagination [allPagesNumber]="data.totalPages"
+                (changePage)="onPageChange($event)"></app-pagination>
+        </div>
+    </div>
+</ng-container>

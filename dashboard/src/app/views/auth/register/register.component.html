@@ -1,0 +1,46 @@
+<div id="registration-forms">
+    <form class="form-signup" [formGroup]="registerForm" (ngSubmit)="register()">
+        <h1 class="h3 mb-3 font-weight-normal text-center"> Register</h1>
+        <input type="email" id="user-email" class="form-control" placeholder="Email address" formControlName="email">
+        <div class="form-control-feedback" *ngIf="formControls['email'].invalid 
+                    && (formControls['email'].dirty || formControls['email'].touched)">
+            <small *ngIf="formControls['email']['errors'] && 
+                    formControls['email']['errors']['required']" class="text-danger">
+                Email is required</small>
+            <small *ngIf="formControls['email']['errors'] && 
+                    formControls['email']['errors']['email']" class="text-danger">
+                Please enter a valid email</small>
+        </div>
+        <input type="text" id="user-name" class="form-control mt-2" placeholder="choose a username"
+            formControlName="name">
+        <div class="form-control-feedback" *ngIf="formControls['name'].invalid 
+                    && (formControls['name'].dirty || formControls['name'].touched)">
+            <small *ngIf="formControls['name']['errors'] && 
+                    formControls['name']['errors']['required']" class="text-danger">
+                Please choose a username</small>
+        </div>
+        <input type="password" id="user-pass" (keyup)="clearpwdError()" class="form-control mt-2" placeholder="Password"
+            formControlName="password">
+        <div class="form-control-feedback" *ngIf="formControls['password'].invalid 
+                    && (formControls['password'].dirty || formControls['password'].touched)">
+            <small *ngIf="formControls['password']['errors'] && 
+                    formControls['password']['errors']['required']" class="text-danger">
+                Please enter a password</small>
+        </div>
+        <input type="password" id="user-repeatpass" (keyup)="clearpwdError()" class="form-control mt-2"
+            placeholder="Repeat Password" formControlName="confirmPassword">
+        <small class="text-danger" *ngIf="diffpasswords">
+            Passwords don't match
+        </small>
+        <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-user-plus"></i> Sign Up <span
+                *ngIf="loading"><i class="fa fa-spin fa-spinner"></i></span> </button>
+
+        <hr>
+
+        <div class="text-center">
+            <span>
+                Already have an account? <a [routerLink]="['/auth/login']">Login here</a>
+            </span>
+        </div>
+    </form>
+</div>
